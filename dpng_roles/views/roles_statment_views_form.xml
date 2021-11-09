@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+
+
+        <record id="view_rol_statment_form" model="ir.ui.view">
+            <field name="name">gob.roles.statment.form</field>
+            <field name="model">gob.roles.statment</field>
+            <field name="arch" type="xml">
+              <form string="Extractos de Nomina" >
+                <header>
+
+
+                      <button name="action_import_movimientos" string="Importar" class="btn-primary" type="object" />
+                      <button name="button_vaciar_movimientos" string="Vaciar" class="btn-primary" type="object" />
+                      <button name="button_procesar_movimientos" string="Procesar" class="btn-primary" type="object" />
+
+                    <field name="state" widget="statusbar" />
+                </header>
+
+                <sheet>
+                  <div class="oe_title oe_inline">
+                      <label for="name" class="oe_edit_only"/>
+                      <h1><field name="name"/></h1>
+                  </div>
+
+                  <div class="oe_button_box" name="button_box">
+
+                  </div>
+
+                    <group col="4">
+                            <field name="date"/>
+                            <field name="date_done" readonly="1"/>
+                            <field name="user_id" required="1" options="{'no_open':True, 'no_create_edit': True,'no_create': True, 'no_quick_create': True}" />
+                            <!-- <field name="reference" readonly="1"/> -->
+
+
+
+                    </group>
+
+
+
+
+
+                    <notebook>
+                      <page string="Transaciones Procesadas" name="used_statement_line_ids">
+                          <field name="used_statement_lines_ids" context="{'date':date}">
+                              <tree editable="bottom" string="Lineas de Extractos" limit="100">
+                                    <field name="ejercicio" optional="show"/>
+                                    <field name="periodo" optional="show"/>
+                                    <field name="tipo_nomina" string="Tipo" optional="hide" />
+                                    <field name="name" optional="hide"/>
+                                    <field name="cur_nro" optional="hide" />
+                                    <field name="cur_fecha" optional="hide" />
+                                    <field name="id_spring" optional="hide" />
+                                    <field name="nro_documento" string="Cedula"/>
+                                    <field name="apellidos_nombres" />
+                                    <field name="rubro_cod_deduc"  optional="hide"/>
+                                    <field name="rubro_tipo" />
+                                    <field name="rubro_codigo"  optional="hide"/>
+                                    <field name="rubro_name"  optional="hide"/>
+                                    <field name="amount_calc" />
+                                    <field name="amount_desc" />
+                                    <field name="amount_pend" optional="hide"/>
+                              </tree>
+                          </field>
+                      </page>
+
+                      <page string="Transaciones por Procesar" name="no_used_statement_lines_ids">
+                          <field name="statement_lines_ids" context="{'date':date}">
+                            <tree editable="bottom" string="Lineas de Extractos" limit="100">
+                                  <field name="ejercicio" optional="show"/>
+                                  <field name="periodo" optional="show"/>
+                                  <field name="tipo_nomina" string="Tipo" optional="hide" />
+                                  <field name="name" optional="hide"/>
+                                  <field name="cur_nro" optional="hide" />
+                                  <field name="cur_fecha" optional="hide" />
+                                  <field name="id_spring" optional="hide" />
+                                  <field name="nro_documento" string="Cedula"/>
+                                  <field name="apellidos_nombres" />
+                                  <field name="rubro_cod_deduc"  optional="hide"/>
+                                  <field name="rubro_tipo" />
+                                  <field name="rubro_codigo"  optional="hide"/>
+                                  <field name="rubro_name"  optional="hide"/>
+                                  <field name="amount_calc" />
+                                  <field name="amount_desc" />
+                                  <field name="amount_pend" optional="hide"/>
+                            </tree>
+                          </field>
+                      </page>
+
+                    </notebook>
+                </sheet>
+
+              </form>
+            </field>
+        </record>
+
+
+
+
+</odoo>

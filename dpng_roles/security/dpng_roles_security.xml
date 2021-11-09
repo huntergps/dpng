@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+
+      <record id="group_roles_external" model="res.groups">
+          <field name="name">Usuario Externo de Roles de Pago: Documentos propios</field>
+          <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+          <field name="comment">Solo tiene acceso a sus datos.</field>
+      </record>
+
+      <record id="group_roles_user" model="res.groups">
+          <field name="name">Usuario de Roles de Pago</field>
+          <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+          <field name="comment">the user will have access to his own data in the sales application.</field>
+      </record>
+
+      <record id="group_roles_manager" model="res.groups">
+          <field name="name">Administrador de Roles de Pago</field>
+          <field name="comment">the user will have an access to the sales configuration as well as statistic reports.</field>
+          <field name="implied_ids" eval="[(4, ref('group_roles_user'))]"/>
+          <field name="users" eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"/>
+      </record>
+
+
+</odoo>

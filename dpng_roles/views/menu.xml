@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+
+
+
+      <!-- Top menu item -->
+      <menuitem id="roles_menu_root"
+          name="Talento Humano"
+          web_icon="dpng_roles,static/description/icon.png"
+          active="True"
+          sequence="7"/>
+
+      <menuitem id="roles_order_menu"
+          name="Roles de Pago"
+          parent="roles_menu_root"
+          sequence="2"/>
+
+
+
+
+    <menuitem id="menu_roles_statments"
+            action="action_roles_statments"
+            parent="roles_order_menu"
+            sequence="10" groups="dpng_roles.group_roles_user"/>
+
+
+    <menuitem id="menu_roles_pagos"
+            action="action_roles_pagos"
+            parent="roles_order_menu"
+            sequence="1" groups="dpng_roles.group_roles_user"/>
+
+    <menuitem id="menu_roles_pagos_det"
+            action="action_roles_pagos_det"
+            parent="roles_order_menu"
+            sequence="2" groups="dpng_roles.group_roles_user"/>
+
+
+
+</odoo>

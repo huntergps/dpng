@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+
+
+
+        <record id="view_roles_statment_tree" model="ir.ui.view">
+            <field name="name">gob.roles.statment.tree</field>
+            <field name="model">gob.roles.statment</field>
+            <field name="priority">2</field>
+            <field name="arch" type="xml">
+                <tree string="Extractos de Nomina" multi_edit="1" sample="1">
+                    <field name="name" string="Descripcion" readonly="1" decoration-bf="1"/>
+                    <field name="date" widget="date" optional="hide"/>
+                    <field name="date_done"  widget="date" optional="hide"/>
+
+                    <field name="state" readonly="1"/>
+                    <field name="user_id" optional="show" widget="many2one_avatar_user"/>
+                </tree>
+            </field>
+        </record>
+
+
+        <record id="view_roles_statment_filter" model="ir.ui.view">
+            <field name="name">gob.roles.statment.list.select</field>
+            <field name="model">gob.roles.statment</field>
+            <field name="priority" eval="15"/>
+            <field name="arch" type="xml">
+                <search string="Buscar Extractos de Nomina">
+                    <field name="name" string="Descripcion" filter_domain="[('name', 'ilike', self)]"/>
+                    <field name="user_id"/>
+                    <group expand="0" string="Group By">
+                        <filter string="Usuario" name="salesperson" domain="[]" context="{'group_by': 'user_id'}"/>
+                        <filter string="Fecha" name="order_month" domain="[]" context="{'group_by': 'date'}"/>
+                    </group>
+               </search>
+            </field>
+        </record>
+
+        <record id="action_roles_statments" model="ir.actions.act_window">
+            <field name="name">Extractos de Nomina</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">gob.roles.statment</field>
+            <field name="view_mode">tree,form</field>
+            <field name="search_view_id" ref="view_roles_statment_filter"/>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    Debe crear un nuevo archivo de extractos de nomina.
+                </p>
+            </field>
+        </record>
+
+
+
+        <record id="gob_roles_statement_import_view" model="ir.ui.view">
+            <field name="name">Cargar Extractos de Nomina</field>
+            <field name="model">gob.roles.statment.import</field>
+            <field name="priority">1</field>
+            <field name="arch" type="xml">
+                <form string="Cargar Extractos de Nomina">
+                    <h2>Seleccione los archivos a cargar:</h2>
+
+                    <field name="attachment_ids" widget="many2many_binary" colspan="2" string="Seleccionar Archivos" nolabel="1"/>
+                    <footer>
+                        <button name="import_file" string="Cargar" type="object" class="btn-primary"/>
+                        <button string="Cancelar" class="btn-secondary" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+
+        <record id="action_gob_roles_statement_import" model="ir.actions.act_window">
+            <field name="name">Cargar</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">gob.roles.statment.import</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+            <field name="view_id" ref="gob_roles_statement_import_view"/>
+        </record>
+
+
+
+</odoo>

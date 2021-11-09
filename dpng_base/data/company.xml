@@ -1,0 +1,24 @@
+<odoo>
+  <data noupdate="1">
+    <record id="base.main_company" model="res.company">
+        <field name="name">DIRECCION DEL PARQUE NACIONAL GALAPAGOS</field>
+        <field name="company_registry">000</field>
+        <field name="vat">2060002010001</field>
+        <field name="currency_id" ref="base.USD"/>
+        <field name="website">www.galapagos.gob.ec</field>
+        <field name="phone">+593-5 252-6189</field>
+        <field name="email">admin@galapagos.tech</field>
+        <field name="street">Av. Charles Darwin y S/N</field>
+        <field name="city">Santa Cruz</field>
+        <!-- <field name="social_twitter">https://twitter.com/parquegalapagos</field>
+        <field name="social_facebook">https://www.facebook.com/parquegalapagos</field>
+        <field name="social_youtube">https://www.youtube.com/user/parquegalapagosec</field>
+        <field name="social_instagram">https://www.flickr.com/photos/parquegalapagos</field> -->
+        <field name="logo" type="base64" file="dpng_base/static/img/logo_png.jpeg"/>
+        <field name="favicon" type="base64" file="dpng_base/static/img/favicon.ico"/>
+        <field name="logo_header" type="base64" file="dpng_base/static/img/cabecera_png.jpg"/>
+        <field name="logo_footer" type="base64" file="dpng_base/static/img/pie_png.jpg"/>
+
+    </record>
+</data>
+</odoo>

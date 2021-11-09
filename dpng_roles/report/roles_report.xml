@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="action_report_rol_individual" model="ir.actions.report">
+            <field name="name">Rol de Pagos</field>
+            <field name="model">gob.roles.det</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">dpng_roles.report_rolindividual</field>
+            <field name="report_file">dpng_roles.report_rolindividual</field>
+            <field name="print_report_name">'Rol de Pagos - %s' % (object.name)</field>
+            <field name="binding_model_id" ref="model_gob_roles_det"/>
+            <field name="binding_type">report</field>
+            <!-- <field name="attachment_use">True</field> -->
+            <!-- <field name="attachment">'Rol de Pagos - %s' % (object.name)+'.pdf'</field> -->
+        </record>
+
+        <record id="action_report_rol_individual" model="ir.actions.report">
+            <field name="paperformat_id" ref="dpng_roles.paperformat_rol_individual"/>
+        </record>
+
+    </data>
+</odoo>

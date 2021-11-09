@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <record id="view_company_form" model="ir.ui.view">
+        <field name="name">roles dpng company</field>
+        <field name="model">res.company</field>
+        <field name="inherit_id" ref="base.view_company_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//notebook" position="inside">
+                <page string="SIA API" name="sia_api">
+                    <group col="6">
+                        <field name="sia_jwt_url"/>
+                        <field name="sia_jwt_username"/>
+                        <field name="sia_jwt_password" password="True" />
+                    </group>
+
+                    <button name="get_empleados_sia" string="Leer Empleados desde SIA" class="btn-primary" type="object" />
+
+                </page>
+
+            </xpath>
+        </field>
+    </record>
+
+</odoo>
