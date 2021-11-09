@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+
+    <t t-name="awesome_theme.FieldStatus.mobile">
+        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+            <t t-if="status" t-esc="status.display_name"/>
+        </button>
+        <ul class="dropdown-menu">
+            <t t-foreach="selection_unfolded + selection_folded" t-as="i">
+                <t t-set="disabled" t-value="!clickable"/>
+                <li t-if="i.selected" >
+                    <a class="dropdown-item active" href="#">
+                        <t t-esc="i.display_name" t-attf-aria-label="#{i.display_name} is current state"/>
+                    </a>
+                </li>
+                <li t-if="!i.selected and disabled" >
+                    <a class="dropdown-item disabled" href="#">
+                        <t t-esc="i.display_name" t-attf-aria-label="#{i.display_name} is not current state"/>
+                    </a>
+                </li>
+                <li t-if="!i.selected and !disabled" >
+                    <a class="dropdown-item disabled" href="#">
+                        <t t-esc="i.display_name" t-attf-aria-label="Click to change current state to #{i.display_name}"/>
+                    </a>
+                </li>
+            </t>
+        </ul>
+    </t>
+
+</templates>
+
+

@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<odoo>
+    <data noupdate="1">
+
+
+      <record id="autorizacion_001001" model="l10n_ec_invoice.autorizacion">
+          <field name="name">001-001</field>
+          <field name="l10n_ec_entity">001</field>
+          <field name="l10n_ec_emission">001</field>
+          <field name="company_id" ref="base.main_company"/>
+      </record>
+
+      <record id="autorizacion_002002" model="l10n_ec_invoice.autorizacion">
+          <field name="name">001-002</field>
+          <field name="l10n_ec_entity">001</field>
+          <field name="l10n_ec_emission">002</field>
+          <field name="company_id" ref="base.main_company"/>
+      </record>
+
+
+    </data>
+</odoo>

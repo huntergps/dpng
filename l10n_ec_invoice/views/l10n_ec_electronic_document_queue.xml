@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+  <record id="documento_electronico_queue_form_view" model="ir.ui.view">
+      <field name="name">documento.electronico.queue.form.view</field>
+      <field name="model">l10n_ec_invoice.documento.electronico.queue</field>
+      <field name="arch" type="xml">
+          <form string="Cola de documentos electronicos">
+              <header>
+                  <button name="process_de_queue" string="PROCESAR DOCUMENTOS ELECTRÓNICOS"
+                    confirm="Esta seguro que quiere procesar la Cola" class="btn-primary" type="object"/>
+                    <button name="process_de_queue_sent_client" string="QUITAR ENVIADOS AL CLIENTE"
+                      confirm="Esta seguro que quiere procesar la Cola" class="btn-primary" type="object"/>
+
+                  <button name="process_de_delete" string="VACIAR COLA"  class="btn-primary"
+                    confirm="Esta seguro que quiere vaciar la Cola" type="object"/>
+                  <button name="process_de_reload" string="RECARGAR DOCUMENTOS ELECTRÓNICOS"
+                    class="btn-primary" type="object"/>
+                    <!-- <button name="process_de_reload_borrador" string="PROCESAR DOCUMENTOS EN BORRADOR"
+                      class="btn-primary" type="object"/> -->
+              </header>
+              <sheet>
+                  <group name="queue_lines" string="Linea de Cola">
+                      <field name="queue_line_ids" nolabel="1" readonly="1">
+                          <tree>
+                              <field name="create_date"/>
+                              <field name="reference"/>
+                              <field name="documento_electronico_id"/>
+                              <field name="sent"/>
+                              <field name="estado"/>
+                          </tree>
+                          <form>
+                            <group>
+                              <field name="reference"/>
+                              <field name="documento_electronico_id"/>
+                              <field name="sent"/>
+                              <field name="estado"/>
+                            </group>
+                          </form>
+                      </field>
+                  </group>
+              </sheet>
+          </form>
+      </field>
+  </record>
+
+  <record id="documento_electronico_queue_tree_view" model="ir.ui.view">
+      <field name="name">documento.electronico.queue.tree.view</field>
+      <field name="model">l10n_ec_invoice.documento.electronico.queue</field>
+      <field name="arch" type="xml">
+          <tree string="Documento electronico" create="0" edit="0" delete="0">
+              <field name="name"/>
+          </tree>
+      </field>
+  </record>
+
+  <record id="action_documento_electronico_queue" model="ir.actions.act_window">
+      <field name="name">Cola de documentos electronicos</field>
+      <field name="res_model">l10n_ec_invoice.documento.electronico.queue</field>
+      <field name="view_mode">tree,form</field>
+  </record>
+
+
+
+</odoo>

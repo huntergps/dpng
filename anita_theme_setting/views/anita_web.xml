@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <template id="anita_theme_setting.bootstrap" inherit_id="web.webclient_bootstrap">
+
+        <xpath expr="//t[@t-set='head_web']" position="after">
+            <style id="anita_style_id" />
+            <style id="anita_mode_style_id" />
+            <style id="anita_preview_mode_style_id" />
+            <style id="anita_preview_style_id" />
+        </xpath>
+
+        <!-- add the style id -->
+        <xpath expr="//t[@t-set='head_web']" position="inside">
+            <link rel="stylesheet" type="text/css" href="/anita_theme_setting/get_theme_modes_data" />
+            <script type="text/javascript">
+                odoo.define('anita_theme_setting.theme_setting', function (require) {
+                    "use strict";
+                    return <t t-out="json.dumps(request.env['anita_theme_setting.setting_manager'].sudo().get_user_setting())"/>;
+                })
+            </script>
+        </xpath>
+
+    </template>
+
+</odoo>

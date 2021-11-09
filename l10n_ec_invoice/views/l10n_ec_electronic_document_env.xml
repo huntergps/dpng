@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="account_l10n_ec_invoice_ambiente" model="ir.ui.view">
+        <field name="name">l10n_ec_invoice.ambiente.form</field>
+        <field name="model">l10n_ec_invoice.ambiente</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="ambiente"/>
+                <field name="recepcioncomprobantes"/>
+                <field name="autorizacioncomprobantes"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_l10n_ec_invoice_ambiente_form" model="ir.ui.view">
+        <field name="name">l10n_ec_invoice.ambiente.form</field>
+        <field name="model">l10n_ec_invoice.ambiente</field>
+        <field name="priority">1</field>
+        <field name="arch" type="xml">
+            <form string="Ambiente de Emision">
+                <sheet>
+
+                    <group>
+                          <field name="name"/>
+
+                    </group>
+                                <group string="Datos Generales">
+                                  <field name="ambiente"/>
+                                  <field name="recepcioncomprobantes"/>
+                                  <field name="autorizacioncomprobantes"/>
+                                </group>
+
+
+                </sheet>
+
+            </form>
+        </field>
+    </record>
+
+
+    <record id="action_account_l10n_ec_invoice_ambiente_tree" model="ir.actions.act_window">
+        <field name="name">Ambientes de Emision</field>
+        <field name="res_model">l10n_ec_invoice.ambiente</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+</odoo>

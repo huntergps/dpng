@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+
+
+
+  <record id="view_move_form_inherit_l10n_ec_lines" model="ir.ui.view">
+      <field name="name">account.move.form.inherit.l10n.ec.lines</field>
+      <field name="model">account.move</field>
+      <field name="inherit_id" ref="account.view_move_form"/>
+      <field name="arch" type="xml">
+
+
+        <xpath expr="//page[@id='invoice_tab']/field[@name='invoice_line_ids']/tree[1]" position="attributes">
+            <attribute name = "limit">200</attribute>
+        </xpath>
+
+        <xpath expr="//page[@id='invoice_tab']/field[@name='invoice_line_ids']/tree/field[@name='product_id']" position="replace">
+          <field name="product_id"
+            options="{'no_open': True, 'no_create': True}"
+                 domain="
+                      context.get('default_move_type') in ('out_invoice', 'out_refund', 'out_receipt')
+                      and [('sale_ok', '=', True), '|', ('company_id', '=', False), ('company_id', '=', parent.company_id)]
+                      or [('purchase_ok', '=', True), '|', ('company_id', '=', False), ('company_id', '=', parent.company_id)]
+                 "/>
+        </xpath>
+
+
+
+        <!-- <xpath expr="//page[@id='invoice_tab']/field[@name='invoice_line_ids']/tree/field[@name='product_id']" position="after">
+           <field name="product_code"/>
+        </xpath> -->
+
+        <!-- <xpath expr="//page[@id='invoice_tab']/field[@name='invoice_line_ids']/tree/field[@name='product_id']" position="attributes">
+           <attribute name="context">{'display_default_code': False}</attribute>
+        </xpath> -->
+
+
+
+        <!-- <xpath expr="//page[@id='invoice_tab']/field[@name='invoice_line_ids']/tree/field[@name='product_id']" position="before">
+          <field name="product_id"
+                 optional="show"
+                 domain="
+                      context.get('default_move_type') in ('out_invoice', 'out_refund', 'out_receipt')
+                      and [('sale_ok', '=', True), '|', ('company_id', '=', False), ('company_id', '=', parent.company_id)]
+                      or [('purchase_ok', '=', True), '|', ('company_id', '=', False), ('company_id', '=', parent.company_id)]
+                 "/>
+        </xpath> -->
+
+<!-- {'display_default_code': False} -->
+
+         <xpath expr="//page[@id='invoice_tab']/field[@name='invoice_line_ids']/tree/field[@name='account_id']" position="replace">
+           <field name="display_type" invisible="1"/>
+           <field name="account_id"
+                  groups="account.group_account_readonly"
+                  options="{'no_create': True}"
+                  domain="[('deprecated', '=', False), ('user_type_id.type', 'not in', ('receivable', 'payable')), ('company_id', '=', parent.company_id), ('is_off_balance', '=', False)]"
+                  attrs="{'required': [('display_type', '=', False)],'column_invisible':[('parent.move_type', 'in', ('out_invoice','out_refund','out_receipt'))]}"/>
+         </xpath>
+
+         <xpath expr="//page[@id='invoice_tab']/field[@name='invoice_line_ids']/tree/field[@name='discount']" position="attributes">
+             <attribute name = "optional">show</attribute>
+         </xpath>
+
+         <xpath expr="//page[@id='invoice_tab']/field[@name='invoice_line_ids']/tree/field[@name='name']" position="attributes">
+             <attribute name = "optional">hide</attribute>
+         </xpath>
+
+         <xpath expr="//page[@id='invoice_tab']/field[@name='invoice_line_ids']/tree/field[@name='tax_ids']" position="attributes">
+             <attribute name = "optional">hide</attribute>
+         </xpath>
+
+        <xpath expr="//page[@id='invoice_tab']/field[@name='invoice_line_ids']/tree/field[@name='price_subtotal']" position="before">
+          <field name="price_subtotal_line" string="Total" optional="show"/>
+          <field name="price_subtotal_discount" string="Desc" optional="show"/>
+        </xpath>
+
+        <xpath expr="//page[@id='invoice_tab']/field[@name='invoice_line_ids']/tree/field[@name='price_subtotal']" position="after">
+          <field name="vat_iva_subtotal" string="IVA" optional="show"/>
+        </xpath>
+
+      </field>
+  </record>
+
+</odoo>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="anita_company_tree" model="ir.ui.view">
+        <field name="name">res.company.tree</field>
+        <field name="model">res.company</field>
+        <field name="inherit_id" ref="base.view_company_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[last()]" position="after">
+                <field name="current_theme_mode"/>
+                <field name="current_theme_style"/>
+                <template name="anita_template_widget"
+                          options="{'template': 'anita_theme_setting.theme_setting_buttons'" />
+            </xpath>
+        </field>
+    </record>
+
+  <!-- view company form -->
+    <record id="anita_view_company_form" model="ir.ui.view">
+        <field name="name">res.company.form.inherit.awesome_theme</field>
+        <field name="model">res.company</field>
+        <field name="inherit_id" ref="base.view_company_form"/>
+        <field name="arch" type="xml">
+
+            <!--  theme setting  -->
+            <xpath expr="//page[@name='general_info']" position="after">
+                <page string="Theme Setting" name="theme_setting">
+                    <group>
+                        <field name="current_theme_mode"
+                               options="{'no_open': True, 'no_create_edit': True, 'no_create': True}"/>
+                        <field name="current_theme_style"
+                               attrs="{'invisible': [('current_theme_mode', '=', False)]}"
+                               options="{'no_create_edit': True,'no_open': True, 'no_create':True}"/>
+                        <field name="login_style"/>
+                        <field name="app_tab_selected_style"/>
+                        <field name="dialog_pop_style"/>
+                        <field name="button_style"/>
+                        <field name="table_style"/>
+                        <field name="font_name"/>
+                        <field name="show_app_name"/>
+                        <field name="rtl_mode"/>
+                        <field name="allow_debug"/>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="awesome_view_company_pop_form" model="ir.ui.view">
+        <field name="name">res.company.form.inherit.awesome_theme</field>
+        <field name="model">res.company</field>
+        <field name="inherit_id" ref="base.view_company_form"/>
+        <field name="mode">primary</field>
+        <field name="arch" type="xml">
+            <xpath expr="//form" position="inside">
+                <footer>
+                    <button class="btn btn-primary" special="save_and_return" text="save" />
+                    <button class="btn btn-secondary" text="cancel" special="cancel" />
+                </footer>
+            </xpath>
+            <xpath expr="//page[@name='theme_setting']" position="replace"/>
+        </field>
+    </record>
+
+</odoo>

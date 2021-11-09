@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+  <data noupdate="1">
+
+        <record id="cliente_mepriga" model="res.partner">
+            <field name="name">MEGA PRIMAVERA GALAPAGOS SA  MEPRIGA</field>
+            <field name="state_id" ref="base.state_ec_20"/>
+            <field name="country_id" ref="base.ec"/>
+            <field name="street">AV. BALTRA S/N Y CHARLES BINFORD</field>
+            <field name="city">Puerto Ayora</field>
+            <field name="email">contabilidad@megaprimavera.com</field>
+            <field name="phone">052-526-091</field>
+            <field name="is_company">1</field>
+            <field name="l10n_latam_identification_type_id" ref="l10n_ec.ec_ruc"/>
+            <field name="vat">0992624310001</field>
+        </record>
+        <record id="cliente_ng" model="res.partner">
+            <field name="name">GUERRERO ALDAS NARCISA DE JESUS</field>
+            <field name="state_id" ref="base.state_ec_20"/>
+            <field name="country_id" ref="base.ec"/>
+            <field name="street">FRAGATA S/N Y DAPHNE</field>
+            <field name="city">Puerto Ayora</field>
+            <field name="email">contabilidad@megaprimavera.com</field>
+            <field name="phone">05-301-3081</field>
+            <field name="is_company">1</field>
+            <field name="l10n_latam_identification_type_id" ref="l10n_ec.ec_ruc"/>
+            <field name="vat">2000026688001</field>
+        </record>
+
+        <record id="cliente_JB" model="res.partner">
+            <field name="name">BENITEZ LOZADA JOHNSON OLIVO</field>
+            <field name="state_id" ref="base.state_ec_20"/>
+            <field name="country_id" ref="base.ec"/>
+            <field name="street">AV. BALTRA S/N Y CHARLES BINFORD</field>
+            <field name="city">Puerto Ayora</field>
+            <field name="email">contabilidad@megaprimavera.com</field>
+            <field name="phone">052-526-091</field>
+            <field name="is_company">1</field>
+            <field name="l10n_latam_identification_type_id" ref="l10n_ec.ec_ruc"/>
+            <field name="vat">1801971613001</field>
+        </record>
+
+    </data>
+</odoo>

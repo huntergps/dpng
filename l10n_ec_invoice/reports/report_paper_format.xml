@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+		<record id="ride_format" model="report.paperformat">
+			<field name="name">RIDE</field>
+			<field name="default" eval="False" />
+			<field name="format">custom</field>
+			<field name="page_height">297</field>
+			<field name="page_width">210</field>
+			<field name="orientation">Portrait</field>
+			<field name="margin_top">3</field>
+			<field name="margin_left">15</field>
+			<field name="margin_right">15</field>
+			<field name="header_line" eval="False" />
+			<field name="header_spacing">1</field>
+			<field name="dpi">90</field>
+		</record>
+
+		<record id="account.account_invoices" model="ir.actions.report">
+				<field name="paperformat_id" ref="l10n_ec_invoice.ride_format" />
+		</record>
+
+
+
+
+		<!-- <report
+				id="retencion_electronica"
+				model="account.move"
+				string="Retención"
+				report_type="qweb-pdf"
+				name="l10n_ec_invoice.report_retencion_electronica"
+				file="Retención"
+				attachment="(object.state == 'posted') and ((object.name or 'INV').replace('/','_')+'.pdf')"
+				print_report_name="(object._get_report_base_filename())"
+				groups="account.group_account_invoice"
+		/> -->
+
+		<!-- <record id="retencion_electronica" model="ir.actions.report">
+			<field name="paperformat_id" ref="l10n_ec_invoice.ride_format" />
+		</record> -->
+
+	</data>
+</odoo>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<templates xml:space="preserve">
+    <t t-name="awesome_theme.ComparisonMenu" owl="1">
+        <div class="o_comparison_menu btn-group" togglerClass="'btn btn-light'" t-on-dropdown-item-selected="onComparisonSelected">
+            <t t-foreach="items" t-as="item" t-key="item.id">
+                <DropdownItem
+                    class="o_menu_item"
+                    t-att-class="{ selected: item.isActive }"
+                    payload="{ itemId: item.id }"
+                    parentClosingMode="'none'"
+                    t-esc="item.description"
+                />
+            </t>
+        </div>
+    </t>
+</templates>

@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<templates id="template" xml:space="preserve">
+    <t t-name="awesome_theme.sidebar_menu" owl="1">
+        <div class="sidebar_menu">
+            <div class="app_container">
+
+                <!-- header -->
+                <div class="app_header">
+                    <UserProfile />
+                </div>
+
+                <!-- app menu -->
+                <div class="scroll_container flex-fill ">
+                    <div class="app_items_wrapper d-flex flex-column">
+                        <div class="app_items flex-fill">
+                            <t t-foreach="state.apps || []" t-as="app" t-key="app.id">
+                                <SideBarAppItem app="app" t-on-app-click="on_app_click" />
+                            </t>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- footer  -->
+                <div class="sidebar_footer">
+                    <a role="button" href="#" class="board_toggler d-flex justify-content-center" t-on-click.prevent="on_app_board_toggler_click" >
+                        <svg class="icon" viewBox="0 0 1024 1024" version="1.1" fill="#fff" width="32" height="32">
+                            <path d="M426.666667 469.333333H128c-25.6 0-42.666667-17.066667-42.666667-42.666666V128c0-25.6 17.066667-42.666667 42.666667-42.666667h298.666667c25.6 0 42.666667 17.066667 42.666666 42.666667v298.666667c0 25.6-17.066667 42.666667-42.666666 42.666666zM170.666667 384h213.333333V170.666667H170.666667v213.333333zM896 469.333333h-298.666667c-25.6 0-42.666667-17.066667-42.666666-42.666666V128c0-25.6 17.066667-42.666667 42.666666-42.666667h298.666667c25.6 0 42.666667 17.066667 42.666667 42.666667v298.666667c0 25.6-17.066667 42.666667-42.666667 42.666666z m-256-85.333333h213.333333V170.666667h-213.333333v213.333333zM896 938.666667h-298.666667c-25.6 0-42.666667-17.066667-42.666666-42.666667v-298.666667c0-25.6 17.066667-42.666667 42.666666-42.666666h298.666667c25.6 0 42.666667 17.066667 42.666667 42.666666v298.666667c0 25.6-17.066667 42.666667-42.666667 42.666667z m-256-85.333334h213.333333v-213.333333h-213.333333v213.333333zM426.666667 938.666667H128c-25.6 0-42.666667-17.066667-42.666667-42.666667v-298.666667c0-25.6 17.066667-42.666667 42.666667-42.666666h298.666667c25.6 0 42.666667 17.066667 42.666666 42.666666v298.666667c0 25.6-17.066667 42.666667-42.666666 42.666667z m-256-85.333334h213.333333v-213.333333H170.666667v213.333333z" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
+            <div class="app_tab_pane_box">
+                <t t-foreach="state.apps || []" t-as="app" t-key="app.id">
+                    <AppTabPane app="app" t-ref="AppTabPane" />
+                </t>
+            </div>
+        </div>
+    </t>
+
+    <!-- tab pane -->
+    <t t-name="awesome_theme.app_tab_pane" owl="1">
+        <div class="app_tab_pane flex-fill" t-att-class="{'d-none': !state.active}">
+           
+            <div class="d-flex flex-column tab_pane_scroll_box">
+                
+                <!-- begin::active app name -->
+                <div class="active_app_name">
+                    <p class="active_app_name ml-2">
+                        <t t-raw="app.name"/>
+                    </p>
+                </div>
+
+                <!-- menu container -->
+                <div class="menu_container flex-fill">
+                    <ul>
+                        <t t-foreach="app.childrenTree || []" t-as="menu_item" t-key="menu_item.id">
+                            <t t-call="awesome_theme.menu_item">
+                                <t t-set="depth" t-value="0"/>
+                                <t t-set="menu" t-value="menu_item" />
+                            </t>
+                        </t>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </t>
+
+    <!-- second or more depth -->
+    <t t-name="awesome_theme.menu_item" owl="1">
+        <t t-set="depth" t-value="(depth || 0) + 1"/>
+        <t t-if="!menu.childrenTree.length">
+            <!-- has no submenu -->
+            <li>
+                <a href="#"
+                    class="menu_link"
+                    t-att-class="{'active': state.current_action &amp;&amp; state.current_action == menu.actionID}"
+                    t-att-href="getMenuItemHref(menu)"
+                    t-on-click.prevent="click_menu_item(menu)">
+                    <span t-attf-style="padding-left: {{(depth - 1) * 15}}px">
+                        <t t-esc="menu.name"/>
+                    </span>
+                </a>
+            </li>
+        </t>
+        <!-- have sub menu -->
+        <t t-else="">
+            <li>
+                <a t-att-class="{'open': menu.open}" t-on-click.prevent="toggle_sub_menu(menu)"  href="#">
+                    <span t-attf-style="padding-left: {{(depth -1) * 15}}px">
+                        <t t-esc="menu.name"/>
+                    </span>
+                    <i class="sub-menu-arrow fa" t-att-class="{'fa-angle-up': menu.open, 'fa-angle-down': !menu.open, 'rotate-in': menu.open}"/>
+                </a>
+                <ul t-att-class="{'collapse': !menu.open}">
+                    <t t-foreach="menu.childrenTree" t-as="menu">
+                        <t t-call="awesome_theme.menu_item" />
+                    </t>
+                </ul>
+            </li>
+        </t>
+    </t>
+
+    <!-- menu apps -->
+    <t t-name="awesome_theme.sidebar_app_item" owl="1">
+        <a class="app_item"
+            t-att-class="{'active': state.active}"
+            t-on-click.prevent="click_app_item"
+            t-att-href="getMenuItemHref()">
+            <img class="o-app-icon " t-attf-src="data:image/png;base64,{{app.webIconData}}"/>
+            <div class="o_caption app_name">
+                <t t-esc="app.name" />
+            </div>
+        </a>
+    </t>
+
+</templates>

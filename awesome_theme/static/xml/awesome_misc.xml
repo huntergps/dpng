@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+
+    <t t-name="awesome_theme.icon_button">
+        <i t-attf-class="fa fa-#{icon}" t-att-title="label" />
+        <span class="d-none d-sm-inline" t-esc="label" />
+    </t>
+
+    <t t-extend="ListView.buttons" t-name="ListView.buttons">
+        <t t-jquery=".o_list_button_add" t-operation="inner">
+            <t t-call="awesome_theme.icon_button">
+                <t t-set="icon" t-value="'plus'" />
+                <t t-set="label">Create</t>
+            </t>
+        </t>
+
+        <t t-jquery=".o_list_button_save" t-operation="inner">
+            <t t-call="awesome_theme.icon_button">
+                <t t-set="icon" t-value="'check'" />
+                <t t-set="label">Save</t>
+            </t>
+        </t>
+
+        <t t-jquery=".o_list_button_discard" t-operation="inner">
+            <t t-call="awesome_theme.icon_button">
+                <t t-set="icon" t-value="'times'" />
+                <t t-set="label">Discard</t>
+            </t>
+        </t>
+    </t>
+
+<!--    <t t-extend="BillsListView.buttons" t-name="BillsListView.buttons">-->
+<!--        <t t-jquery=".o_list_button_add" t-operation="inner">-->
+<!--            <t t-call="awesome_theme.icon_button">-->
+<!--                <t t-set="icon" t-value="'plus'" />-->
+<!--                <t t-set="label">Create</t>-->
+<!--            </t>-->
+<!--        </t>-->
+
+<!--        <t t-jquery=".o_list_button_save" t-operation="inner">-->
+<!--            <t t-call="awesome_theme.icon_button">-->
+<!--                <t t-set="icon" t-value="'check'" />-->
+<!--                <t t-set="label">Save</t>-->
+<!--            </t>-->
+<!--        </t>-->
+
+<!--        <t t-jquery=".o_list_button_discard" t-operation="inner">-->
+<!--            <t t-call="awesome_theme.icon_button">-->
+<!--                <t t-set="icon" t-value="'times'" />-->
+<!--                <t t-set="label">Discard</t>-->
+<!--            </t>-->
+<!--        </t>-->
+<!--        -->
+<!--        <t t-jquery=".o_button_upload_bill" t-operation="inner">-->
+<!--            <t t-call="awesome_theme.icon_button">-->
+<!--                <t t-set="icon" t-value="'times'" />-->
+<!--                <t t-set="label">Upload</t>-->
+<!--            </t>-->
+<!--        </t>-->
+<!--    </t>-->
+
+    <t t-name="awesome_theme.list_view_button_wrapper">
+        <div class="btn-group">
+            <button type="button" class="btn btn-danger">Action</button>
+            <button type="button" class="btn btn-danger dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <span class="sr-only">Toggle Dropdown</span>
+            </button>
+            <div class="dropdown-menu">
+                <div class="o_list_buttons d-flex" role="toolbar" aria-label="Main actions">
+                    <button type="button" class="btn btn-primary o_list_button_save" title="Save record" accesskey="s">
+                        Save
+                    </button>
+                    <button type="button" class="btn btn-secondary o_list_button_discard" title="Discard record" accesskey="j">
+                        Discard
+                    </button>
+                    <t t-if="widget.is_action_enabled('create')">
+                        <button type="button" class="btn btn-primary o_list_button_add" title="Create record" accesskey="c">
+                            Create
+                        </button>
+                    </t>
+                    <t t-if="widget.is_action_enabled('export_xlsx') and widget.isExportEnable">
+                        <button type="button" class="btn btn-secondary fa fa-download o_list_export_xlsx" title="Export All" aria-label="Export All"/>
+                    </t>
+                </div>
+            </div>
+        </div>
+    </t>
+
+    <t t-extend="Sidebar">
+        <!-- Replace some common sections by icons in mobile -->
+        <t t-jquery=".o_dropdown_toggler_btn t[t-esc='section.label']" t-operation="replace">
+            <t t-set="label" t-value="section.label" />
+            <t t-if="section.name == 'files'">
+                <t t-call="awesome_theme.icon_button">
+                    <t t-set="icon" t-value="'paperclip'" />
+                </t>
+            </t>
+            <t t-elif="section.name == 'print'">
+                <t t-call="awesome_theme.icon_button">
+                    <t t-set="icon" t-value="'print'" />
+                </t>
+            </t>
+            <t t-elif="section.name == 'other'">
+                <t t-call="awesome_theme.icon_button">
+                    <t t-set="icon" t-value="'wrench'" />
+                </t>
+            </t>
+            <t t-else="">
+                <span t-esc="label" />
+            </t>
+        </t>
+    </t>
+
+    <t t-extend="KanbanView.buttons">
+        <!-- Add responsive icons to buttons -->
+        <t t-jquery="button:first" t-operation="inner">
+            <t t-call="awesome_theme.icon_button">
+                <t t-set="icon" t-value="'plus'" />
+                <t t-set="label" t-value="create_text || _t('Create')" />
+            </t>
+        </t>
+
+        <t t-jquery="button.o_button_upload_bill" t-operation="inner">
+            <t t-call="awesome_theme.icon_button">
+                <t t-set="icon" t-value="'upload'" />
+                <t t-set="label" t-value="Upload || _t('Upload')" />
+            </t>
+        </t>
+    </t>
+
+<!--    <t t-extend="BillsKanbanView.buttons" t-name="BillsKanbanView.buttons">-->
+<!--        -->
+<!--        <t t-jquery="button:first" t-operation="inner">-->
+<!--            <t t-call="awesome_theme.icon_button">-->
+<!--                <t t-set="icon" t-value="'plus'" />-->
+<!--                <t t-set="label" t-value="create_text || _t('Create')" />-->
+<!--            </t>-->
+<!--        </t>-->
+
+<!--        <t t-jquery="button.o_button_upload_bill" t-operation="inner">-->
+<!--            <t t-call="awesome_theme.icon_button">-->
+<!--                <t t-set="icon" t-value="'upload'" />-->
+<!--                <t t-set="label" t-value="Upload || _t('Upload')" />-->
+<!--            </t>-->
+<!--        </t>-->
+<!--    </t>-->
+
+    <t t-name="awesome_theme.MenuStatusbarButtons">
+        <div class="dropdown">
+            <button
+                class="o_statusbar_buttons_dropdown btn btn-secondary dropdown-toggle"
+                type="button"
+                data-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false">
+                <t t-call="awesome_theme.icon_button">
+                    <t t-set="icon" t-value="'cogs'" />
+                    <t t-set="label">actions</t>
+                </t>
+            </button>
+        </div>
+    </t>
+
+</templates>

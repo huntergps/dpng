@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+     <t t-name="web.ActionMenus" t-inherit="web.ActionMenus" t-inherit-mode="extension" owl="1">
+        <xpath expr="//div" position="replace">
+            <div class="o_cp_action_menus" t-on-item-selected.stop="_onItemSelected">
+                <DropdownMenu t-if="printItems.length"
+                    t-attf-title="Print"
+                    items="printItems"
+                    icon="'fa fa-print'"
+                    hotkey="'shift+u'"
+                    hotkeyTitle="'Printing options'"/>
+                <DropdownMenu t-if="actionItems.length"
+                    t-attf-title="{{!state.isMobile? env._t('Action') : ''}}"
+                    items="actionItems"
+                    icon="'fa fa-cog'"
+                    class="ml-2"
+                    closeOnSelected="true"
+                    hotkey="'u'"
+                    hotkeyTitle="'Additional actions'"/>
+            </div>
+        </xpath>
+    </t>
+</templates>

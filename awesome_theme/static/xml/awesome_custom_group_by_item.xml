@@ -1,0 +1,29 @@
+<templates xml:space="preserve">
+
+    <t t-name="web.CustomGroupByItem" t-inherit="web.CustomGroupByItem" t-inherit-mode="extension" owl="1">
+        <xpath expr="//Dropdown" position="replace" >
+            <div class="o_add_custom_group_menu">
+                <AwesomeAccordion title="'Add Custom Group'">
+                    <t t-set-slot="content">
+                        <div>
+                            <div class="px-3 py-2">
+                                <select class="w-100 o_input" t-model="state.fieldName">
+                                    <option t-foreach="props.fields" t-as="field" t-key="field.name"
+                                    t-att-value="field.name"
+                                    t-esc="field.string"
+                                    />
+                                </select>
+                            </div>
+                            <div class="px-3 py-2">
+                                <button class="btn btn-primary w-100" t-on-click="onApply">
+                                    Apply
+                                </button>
+                            </div>
+                        </div>
+                    </t>
+                </AwesomeAccordion>
+            </div>
+        </xpath>
+    </t>
+
+</templates>

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+
+    <record model="ir.ui.view" id="view_company_form">
+        <field name="name">res.company.form.inherit</field>
+        <field name="inherit_id" ref="base.view_company_form"/>
+        <field name="model">res.company</field>
+        <field name="arch" type="xml">
+
+          <xpath expr="//field[@name='company_registry']" position="attributes">
+            <attribute name="attrs">{'invisible':1 }</attribute>
+          </xpath>
+
+          <xpath expr="//field[@name='vat']" position="attributes">
+            <attribute name="attrs">{'invisible':1 }</attribute>
+          </xpath>
+
+          <xpath expr="//notebook/page" position="after">
+              <page string="Configuracion Ecuatoriana">
+                <group >
+                  <group name="sri" string="Informacion Tributaria">
+                    <field name="tradename"/>
+                    <field name="vat" string  ='Nro de RUC'/>
+                    <field name="lleva_contabilidad" widget="boolean_toggle" />
+                    <field name="contribuyente_especial" widget="boolean_toggle" />
+                    <field name="contribuyente_especial_nro"/>
+                  </group>
+                  <group name="sri" string="Retenciones">
+                    <field name="agente_retencion" widget="boolean_toggle" />
+                    <field name="agente_retencion_nro"/>
+                    <field name="regimen_impositivo"/>
+                    <field name="emitir_retenciones" widget="boolean_toggle" />
+
+                  </group>
+                  <group name="autorizaciones" string="Autorizaciones por defecto">
+                      <field name="autorizacion_id" />
+                  </group>
+                  <group name="electronic_docs" string="Documentos Electronicos">
+                      <field name="firma_id"/>
+                      <field name="ambiente_id"/>
+                  </group>
+                </group>
+
+
+              </page>
+              <page string="Personalización de Reportes" name="reports_custom_ec">
+                <group >
+
+                  <group string="Personalización de Reportes" name="reports_custom_ec">
+                    <field name="logo_header" widget="image"  class="float-left oe_avatar"/>
+                    <field name="logo_footer" widget="image"  class="float-left oe_avatar"/>
+                  </group>
+                  <group name="electronic_docs_logo" string="Documentos Electronicos">
+                      <field name="logo_electronic_doc" widget="image"  class="float-left oe_avatar"/>
+                  </group>
+                </group>
+
+              </page>
+          </xpath>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,19 @@
+<odoo>
+    <data noupdate="0">
+
+        <function model="anita_theme_setting.default_mode_data" name="install_mode">
+            <value eval="'white'"/>
+            <value eval="'15.0.0.1'"/>
+            <value eval="'awesome_theme'"/>
+            <value eval="'./static/json/white_mode.json'"/>
+        </function>
+
+        <function model="anita_theme_setting.default_mode_data" name="install_mode">
+            <value eval="'dark'"/>
+            <value eval="'15.0.0.4'"/>
+            <value eval="'awesome_theme'"/>
+            <value eval="'./static/json/dark_mode.json'"/>
+        </function>
+
+    </data>
+</odoo>

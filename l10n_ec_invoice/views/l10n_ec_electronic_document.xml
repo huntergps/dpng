@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <record id="documento_electronico_form_view" model="ir.ui.view">
+        <field name="name">SRI documento electronico form view</field>
+        <field name="model">l10n_ec_invoice.documento.electronico</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button
+                        attrs="{'invisible':[('estado', 'not in', ('RECIBIDA','EN PROCESO','DEVUELTA','ERROR TCP'))]}"
+                        name="receive_de_offline"
+                        string="VERIFICAR RESPUESTA"
+                        type="object"/>
+                    <button
+                        attrs="{'invisible':[('estado', 'not in', ('NO ENVIADO','ERROR TCP'))]}"
+                        name="enviar_doc"
+                        string="ENVIAR DOCUMENTO"
+                        type="object"/>
+                    <field name="estado" widget="statusbar"/>
+                </header>
+                <sheet>
+                    <group>
+                        <field name="reference" readonly="1" />
+                        <field name="comprobante_id" readonly="1"/>
+                        <field name="tipoemision" readonly="1"/>
+                        <field name="ambiente" readonly="1"/>
+                        <field name="claveacceso" readonly="1"/>
+                        <!--
+                        <field name="barcode128" widget="image"/>
+                    -->
+                        <field name="fechaautorizacion" readonly="1"/>
+                        <field name="mensajes" readonly="1"/>
+                        <field name="xml_file" filename="xml_filename"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="documento_electronico_tree_view" model="ir.ui.view">
+      <field name="name">SRI documento electronico tree view</field>
+        <field name="model">l10n_ec_invoice.documento.electronico</field>
+        <field name="arch" type="xml">
+            <tree string="Documentos electronicos" create="0" edit="0" >
+              <field name="reference" string="Referencia" readonly="1"/>
+              <field name="comprobante_id" readonly="1"/>
+
+              <field name="tipoemision" readonly="1"/>
+              <field name="ambiente" readonly="1"/>
+              <field name="claveacceso" readonly="1"/>
+              <field name="estado" readonly="1"/>
+              <field name="fechaautorizacion" readonly="1"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="documentos_electronicos_docs" model="ir.actions.act_window">
+        <field name="name">Lista documentos electronicos</field>
+        <field name="res_model">l10n_ec_invoice.documento.electronico</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="documento_electronico_tree_view"/>
+    </record>
+
+
+
+
+
+</odoo>

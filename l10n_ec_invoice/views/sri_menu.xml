@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+
+  <menuitem id="menu_sri" name="S.R.I." sequence="4" parent="account.menu_finance">
+      <menuitem id="menu_sri_electronic_docs" name="Documentos Electronicos " sequence="10">
+          <menuitem id="menu_sri_emitidos" name="Emitidos " sequence="10">
+              <menuitem id="menu_sri_queue" name="Cola de Envio" action="action_documento_electronico_queue" sequence="10" />
+              <menuitem id="menu_sri_electronic_docs_emitidos" action="documentos_electronicos_docs" sequence="20"/>
+          </menuitem>
+          <!-- <menuitem id="menu_sri_recibidos" name="Recibidos " sequence="20">
+              <menuitem id="menu_sri_queue" name="Importación de Documentos electrónicos" action="action_documento_electronico_import_list"
+                groups="account.group_account_manager,account.group_account_invoice,account.group_account_user"  sequence="40"/>
+          </menuitem> -->
+      </menuitem>
+
+      <menuitem id="menu_sri_management" name="Configuracion" sequence="20">
+          <menuitem id="menu_action_account_l10n_ec_invoice_autorizacion" action="action_account_l10n_ec_invoice_autorizacion_tree"
+                groups="account.group_account_manager,account.group_account_invoice,account.group_account_user"  sequence="3"/>
+          <menuitem id="menu_action_account_l10n_ec_invoice_ambiente" action="action_account_l10n_ec_invoice_ambiente_tree"
+                groups="account.group_account_manager,account.group_account_invoice,account.group_account_user"  sequence="40"/>
+
+
+      </menuitem>
+
+  </menuitem>
+
+
+
+
+
+
+
+  <record id="l10n_latam_base.action_l10n_latam_identification_type" model="ir.actions.act_window">
+      <field name="name">Tipos de Indentificacion</field>
+  </record>
+
+  <menuitem id="l10n_latam_base.menu_l10n_latam_identification_type" sequence="16" parent="menu_sri_management"/>
+
+  <menuitem id="l10n_latam_invoice_document.menu_document_type" sequence="20" parent="menu_sri_management"/>
+
+
+
+  <record id="l10n_ec.action_account_l10n_ec_sri_payment_tree" model="ir.actions.act_window">
+      <field name="name">Formas de Pago</field>
+  </record>
+
+    <menuitem id="l10n_ec.menu_action_account_l10n_ec_sri_payment" action="l10n_ec.action_account_l10n_ec_sri_payment_tree"
+              groups="account.group_account_manager" parent="menu_sri_management" sequence="30"/>
+
+
+
+</odoo>

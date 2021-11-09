@@ -1,0 +1,13 @@
+
+.o_pager_counter {
+    display: flex;
+    align-items: center;
+    margin-left: 5px;
+    margin-right: 5px;
+    .o_pager_value {
+        margin-right: 5px;
+    }
+    .o_pager_limit {
+        margin-left: 5px;
+    }
+}

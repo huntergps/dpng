@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+     <t t-name="web.WebClient" t-inherit="web.WebClient" t-inherit-mode="extension" owl="1">
+        <xpath expr="//body" position="replace">
+            <body class="o_web_client" t-att-class="{'o_is_superuser': user.userId === 1, 'o_rtl': localization.direction === 'rtl' }">
+                <NotUpdatable>
+                    <SideBarMenu/>
+                </NotUpdatable>
+                <NotUpdatable>
+                    <AwesomeHeader />
+                </NotUpdatable>
+                <NotUpdatable>
+                    <ActionContainer/>
+                </NotUpdatable>
+                <NotUpdatable>
+                    <AwesomeFooter/>
+                </NotUpdatable>
+                <MainComponentsContainer/>
+            </body>
+        </xpath>
+    </t>
+</templates>

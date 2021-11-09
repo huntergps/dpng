@@ -1,0 +1,198 @@
+// scale
+.awesome-effect-scale-enter-active, 
+.awesome-effect-scale-leave-active {
+    transform: scale(0.7);
+    opacity: 0;
+    transition: all 0.3s;
+}
+
+.awesome-effect-scale-enter, 
+.awesome-effect-scale-leave-to {
+    transform: scale(1);
+    opacity: 1;
+}
+
+// awesome-effect-slide-in-right
+.awesome-effect-slide-in-right-enter-active, 
+.awesome-effect-slide-in-right-leave-active {
+    transform: translateX(20%);
+    opacity: 0;
+    transition: all 0.3s cubic-bezier(0.25, 0.5, 0.5, 0.9);
+}
+
+.awesome-effect-slide-in-right-enter, 
+.awesome-effect-slide-in-right-leave-to  {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+// slide-in-bottom
+.awesome-effect-slide-in-bottom-enter-active,
+.awesome-effect-slide-in-bottom-leave-active {
+    transform: translateY(20%);
+    opacity: 0;
+    transition: all 0.3s;
+}
+
+.awesome-effect-slide-in-bottom-enter, 
+.awesome-effect-slide-in-bottom-leave-to {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+// awesome-effect-newspaper
+.awesome-effect-newspaper-enter-active, 
+.awesome-effect-newspaper-leave-active {
+    transform: scale(0) rotate(720deg);
+    opacity: 0;
+    transition: all 0.5s;
+}
+
+.awesome-effect-newspaper-enter, .awesome-effect-newspaper-leave-to {
+    transform: scale(1) rotate(0deg);
+    transition: all 0.5s;
+    opacity: 1;
+}
+
+// .awesome-effect-fall
+.awesome-effect-fall-enter-active, 
+.awesome-effect-fall-leave-active {
+    -webkit-perspective: 1300px;
+    -moz-perspective: 1300px;
+    perspective: 1300px;
+}
+
+.awesome-effect-fall-enter, 
+.awesome-effect-fall-leave-to {
+    -moz-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    transform: translateZ(600px) rotateX(20deg);
+    opacity: 0;
+    transition: all 0.3s ease-in;
+    transform: translateZ(0px) rotateX(0deg);
+    opacity: 1;
+}
+
+// awesome-effect-flip-horizontal
+.awesome-effect-flip-horizontal-enter-active, 
+.awesome-effect-flip-horizontal-leave-active {
+    perspective: 1300px;
+    -moz-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    transform: rotateY(-70deg);
+    transition: all 0.3s;
+    opacity: 0;
+}
+
+.awesome-effect-flip-horizontal-enter, 
+.awesome-effect-flip-horizontal-leave-to{
+    transform: rotateY(0deg);
+    opacity: 1;
+}
+
+// awesome-effect-flip-vertical
+.awesome-effect-flip-vertical-enter-active,  
+.awesome-effect-flip-vertical-leave-active {
+    perspective: 1300px;
+    -moz-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    transform: rotateX(-70deg);
+    transition: all 0.3s;
+    opacity: 0;
+}
+
+.awesome-effect-flip-vertical-enter, 
+.awesome-effect-flip-vertical-leave-to {
+    transform: rotateX(0deg);
+    opacity: 1;
+    -moz-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    transform: rotateX(-70deg);
+    transition: all 0.3s;
+    opacity: 0;
+}
+
+// awesome-effect-super-scaled
+.awesome-effect-super-scaled-enter-active, 
+.awesome-effect-super-scaled-leave-active {
+    transform: scale(2);
+    opacity: 0;
+    transition: all 0.3s;
+}
+
+.awesome-effect-super-scaled-enter, 
+.awesome-effect-super-scaled-leave-to {
+    transform: scale(1);
+    opacity: 1;
+}
+
+// awesome-effect-sign
+.awesome-effect-sign-enter-active, 
+.awesome-effect-sign-leave-active {
+    perspective: 1300px;
+    -moz-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    transform: rotateX(-60deg);
+    transform-origin: 50% 0;
+    opacity: 0;
+    transition: all 0.3s;
+}
+
+.awesome-effect-sign-enter, 
+.awesome-effect-sign-leave-to {
+    perspective: 1300px;
+    transform: rotateX(0deg);
+    opacity: 1;
+    -moz-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    transform-origin: 50% 0;
+    transition: all 0.3s;
+    transform: rotateX(0deg);
+    opacity: 1;
+}
+
+// awesome-effect-rotate-bottom
+.awesome-effect-rotate-bottom-enter-active, 
+.awesome-effect-rotate-bottom-leave-active {
+    perspective: 1300px;
+    -moz-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    transform: translateY(100%) rotateX(90deg);
+    transform-origin: 0 100%;
+    opacity: 0;
+    transition: all 0.3s ease-out;
+}
+
+.awesome-effect-rotate-bottom-enter,
+.awesome-effect-rotate-bottom-leave-to {
+    perspective: 1300px;
+    -moz-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    transform-origin: 0 100%;
+    opacity: 0;
+    transition: all 0.3s ease-out;
+    transform: translateY(0%) rotateX(0deg);
+    opacity: 1;
+}
+
+// awesome-effect-rotate-left
+.awesome-effect-rotate-left-enter-active, 
+.awesome-effect-rotate-left-leave-active{
+    perspective: 1300px;
+    -moz-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    transform: translateZ(100px) translateX(-30%) rotateY(90deg);
+    transform-origin: 0 100%;
+    opacity: 0;
+    transition: all 0.3s;
+}
+
+.awesome-effect-rotate-left-enter,
+.awesome-effect-rotate-left-leave-to {
+    -moz-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    transform-origin: 0 100%;
+    transition: all 0.3s;
+    transform: translateZ(0px) translateX(0%) rotateY(0deg);
+    opacity: 1;
+}

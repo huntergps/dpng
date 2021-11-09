@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+
+    <t t-name="web.CustomFavoriteItem" t-inherit="web.CustomFavoriteItem" t-inherit-mode="extension" owl="1">
+        <xpath expr="//Dropdown" position="replace" >
+            <div class="o_add_favorite">
+                <AwesomeAccordion title="'Save current search'">
+                    <t t-set-slot="content">
+                        <div class="px-3 py-2">
+                            <input type="text"
+                                class="o_input"
+                                autofocus=""
+                                t-ref="description"
+                                t-model.trim="state.description"
+                                t-on-keydown="onInputKeydown"
+                                />
+                            <CheckBox value="state.isDefault" t-on-change="onDefaultCheckboxChange">
+                                Use by default
+                            </CheckBox>
+                            <CheckBox value="state.isShared" t-on-change="onShareCheckboxChange">
+                                Share with all users
+                            </CheckBox>
+                        </div>
+                        <div class="px-3 py-2">
+                            <button class="o_save_favorite btn btn-primary" t-on-click="saveFavorite">
+                                Save
+                            </button>
+                        </div>
+                    </t>
+                </AwesomeAccordion>
+            </div>
+        </xpath>
+    </t>
+</templates>

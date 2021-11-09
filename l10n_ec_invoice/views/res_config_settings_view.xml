@@ -1,0 +1,417 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+
+    <record id="res_config_settings_view_form" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.inherit.ec</field>
+        <field name="model">res.config.settings</field>
+        <field name="priority" eval="40"/>
+        <field name="inherit_id" ref="base.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+          <xpath expr="//div[@data-key='account']" position="inside">
+            <h2>Nota para pie de Impresión de Venta</h2>
+            <div class="row mt16 o_settings_container">
+                <div class="col-12 col-lg-6 o_setting_box" title="Correos para Envios de documentos electronicos"
+                     groups="account.group_account_manager">
+                    <div class="o_setting_left_pane">
+
+                    </div>
+                    <div class="o_setting_right_pane">
+                        <label for="nota_proforma"/>
+
+                        <div class="content-group">
+                            <div class="row">
+
+                                <field name="nota_proforma"/>
+                            </div>
+                        </div>
+                    </div>
+                  </div>
+              </div>
+
+            <h2>Correos para Envios de Facturas y seguimientos de cobros</h2>
+
+
+            <div class="row mt16 o_settings_container">
+                <div class="col-12 col-lg-6 o_setting_box" title="Correos para Envios de documentos electronicos"
+                     groups="account.group_account_manager">
+                    <div class="o_setting_left_pane">
+
+                    </div>
+                    <div class="o_setting_right_pane">
+                        <label for="sale_customer_id"/>
+                        <div class="text-muted">
+                            Correos para Envios de documentos electronicos
+                        </div>
+                        <div class="content-group">
+                            <div class="row">
+                                <label string="Correo" for="email_sri"
+                                       class="col-lg-3 o_light_label"/>
+                                <field name="email_sri"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="o_setting_right_pane">
+                        <label for="email_cobros"/>
+                        <div class="text-muted">
+                            Correos para Envios de correos de seguimiento de cartera
+                        </div>
+                        <div class="content-group">
+                          <div class="row">
+                              <label string="Correo" for="email_cobros"
+                                     class="col-lg-3 o_light_label"/>
+                              <field name="email_cobros"/>
+                          </div>
+                        </div>
+                    </div>
+                    <div class="o_setting_right_pane">
+                        <label for="email_contabilidad"/>
+                        <div class="text-muted">
+                            Correos para Envios de correos de Contabilidad
+                        </div>
+                        <div class="content-group">
+                          <div class="row">
+                              <label string="Correo" for="email_contabilidad"
+                                     class="col-lg-3 o_light_label"/>
+                              <field name="email_contabilidad"/>
+                          </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+              <h2>Cliente por defecto en Ventas</h2>
+
+              <div class="row mt16 o_settings_container">
+                  <div class="col-12 col-lg-6 o_setting_box" title="Establece el Cliente por defecto en Ventas"
+                       groups="account.group_account_manager">
+                      <div class="o_setting_left_pane">
+
+                      </div>
+                      <div class="o_setting_right_pane">
+                          <label for="sale_customer_id"/>
+                          <div class="text-muted">
+                              Establece el Cliente por defecto en Ventas.
+                          </div>
+                          <div class="content-group">
+                              <div class="row">
+                                  <label string="Cliente" for="sale_customer_id"
+                                         class="col-lg-3 o_light_label"/>
+                                  <field name="sale_customer_id"/>
+                              </div>
+                          </div>
+                      </div>
+                      <!-- <div class="o_setting_right_pane">
+                          <label for="sale_acuerdo_id"/>
+                          <div class="text-muted">
+                              Establece el Acuerdo de Pago por defecto en Ventas.
+                          </div>
+                          <div class="content-group">
+                              <div class="row">
+                                  <label string="Acuerdo de Pago" for="sale_acuerdo_id"
+                                         class="col-lg-3 o_light_label"/>
+                                  <field name="sale_acuerdo_id"/>
+                              </div>
+                          </div>
+                      </div> -->
+                  </div>
+              </div>
+
+          </xpath>
+
+
+            <xpath expr="//div[hasclass('settings')]" position="inside">
+                <div class="app_settings_block" data-string="Rentas Internas" string="Rentas Internas" data-key="l10n_ec_sri" groups="account.group_account_manager">
+
+                  <!-- <h2>Chofer por defecto para Guias de Remision</h2>
+
+                  <div class="row mt16 o_settings_container">
+                      <div class="col-12 col-lg-6 o_setting_box" title="Establece el Chofer por defecto para Guias de Remision"
+                           groups="account.group_account_manager">
+                          <div class="o_setting_left_pane">
+
+                          </div>
+                          <div class="o_setting_right_pane">
+                              <label for="driver_id"/>
+                              <div class="text-muted">
+                                  Establece el Chofer por defecto para Guias de Remision
+                              </div>
+                              <div class="content-group">
+                                  <div class="row">
+                                      <label string="Chofer" for="driver_id"
+                                             class="col-lg-3 o_light_label"/>
+                                      <field name="driver_id"
+                                        domain="[('es_transportista','=',True)]"
+                                        />
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="o_setting_right_pane">
+                              <label for="placa_vehiculo"/>
+                              <div class="text-muted">
+                                  Placa de Vehiculo
+                              </div>
+                              <div class="content-group">
+                                  <div class="row">
+                                      <label string="Placa" for="placa_vehiculo"
+                                             class="col-lg-3 o_light_label"/>
+                                      <field name="placa_vehiculo"/>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div> -->
+
+
+                    <h2>Homologación de Productos importados desde facturas electronicas</h2>
+
+                    <div class="row mt16 o_settings_container">
+
+                        <div class="col-xs-12 col-md-6 o_setting_box" id="homologacion" title="Si es manual el proceso de importacion esperara a que el usuario homologe los productos in mapeo">
+                            <div class="o_setting_left_pane"/>
+                            <div class="o_setting_right_pane">
+                                <label for="tipo_homologacion" string="Método de homologación"/>
+                                <div class="text-muted">
+                                    Como se procedera al importar los productos no homologados
+                                </div>
+                                 <div class="content-group">
+                                    <field name="tipo_homologacion" class="o_light_label mt16" widget="radio"/>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- <div class="col-xs-12 col-md-6 o_setting_box" id="metodo_importacion" title="Si es manual el proceso de importacion esperara a que el usuario homologe los productos in mapeo">
+                            <div class="o_setting_left_pane"/>
+                            <div class="o_setting_right_pane">
+                                <label for="metodo_importacion" string="Método de Importación"/>
+                                <div class="text-muted">
+                                    Como se procedera al con la ordenes de Compra, se crean o se comparan con las existentes
+                                </div>
+                                 <div class="content-group">
+                                    <field name="metodo_importacion" class="o_light_label mt16" widget="radio"/>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-xs-12 col-md-6 o_setting_box" />
+                        <div class="col-xs-12 col-md-6 o_setting_box" id="state_purchase_orders" title="Si es manual el proceso de importacion esperara a que el usuario homologe los productos in mapeo">
+                            <div class="o_setting_left_pane"/>
+                            <div class="o_setting_right_pane">
+                                <label for="state_purchase_orders" string="Estado de Ordenes de Compra"/>
+                                <div class="text-muted">
+                                    En que estado se dejaran las ordenes de Compra creadas al importar desde el XML
+                                </div>
+                                 <div class="content-group">
+                                    <field name="state_purchase_orders" class="o_light_label mt16" widget="radio"/>
+                                </div>
+                            </div>
+                        </div> -->
+                    </div>
+                    <h2>Impuestos usados en la Homologación </h2>
+                    <div class="row mt16 o_settings_container">
+                        <div class="col-xs-12 col-md-6 o_setting_box" title="Estos impuestos se establecen en cualquier producto nuevo creado.">
+                            <div class="o_setting_left_pane"/>
+                            <div class="o_setting_right_pane">
+                                <label  for="product_sale_tax_id" string='Impuesto de Productos IVA'/>
+                                <span class="fa fa-lg fa-building-o" title="Los valores establecidos aquí son específicos de la compañía." groups="base.group_multi_company"/>
+                                <div class="text-muted">
+                                    Impuesto por defecto para Productos IVA
+                                </div>
+                                <div class="content-group">
+                                    <div class="row mt16">
+                                        <label string="Ventas" for="product_sale_tax_id" class="col-md-3 o_light_label"/>
+                                        <field name="product_sale_tax_id" domain="[('type_tax_use', 'in', ('sale', 'all')), ('company_id', '=', company_id)]"/>
+                                    </div>
+                                    <div class="row">
+                                        <label string="Compras" for="product_purchase_tax_id" class="col-md-3 o_light_label"/>
+                                        <field name="product_purchase_tax_id" domain="[('type_tax_use', 'in', ('purchase', 'all')), ('company_id', '=', company_id)]"/>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="col-xs-12 col-md-6 o_setting_box" title="Estos impuestos se establecen en cualquier producto nuevo creado.">
+                            <div class="o_setting_left_pane"/>
+                            <div class="o_setting_right_pane">
+                                <label for="product0_sale_tax_id"  string='Impuesto de Productos IVA 0'/>
+                                <span class="fa fa-lg fa-building-o" title="Los valores establecidos aquí son específicos de la compañía." groups="base.group_multi_company"/>
+                                <div class="text-muted">
+                                    Impuesto por defecto para Productos IVA 0
+                                </div>
+                                <div class="content-group">
+                                    <div class="row mt16">
+                                        <label string="Ventas" for="product0_sale_tax_id" class="col-md-3 o_light_label"/>
+                                        <field name="product0_sale_tax_id" domain="[('type_tax_use', 'in', ('sale', 'all')), ('company_id', '=', company_id)]"/>
+                                    </div>
+                                    <div class="row">
+                                        <label string="Compras" for="product0_purchase_tax_id" class="col-md-3 o_light_label"/>
+                                        <field name="product0_purchase_tax_id" domain="[('type_tax_use', 'in', ('purchase', 'all')), ('company_id', '=', company_id)]"/>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="col-xs-12 col-md-6 o_setting_box" title="Estos impuestos se establecen en cualquier servicio nuevo creado.">
+                            <div class="o_setting_left_pane"/>
+                            <div class="o_setting_right_pane">
+                                <label for="product0_sale_tax_id"  string='Impuesto de Servicios IVA'/>
+                                <span class="fa fa-lg fa-building-o" title="Los valores establecidos aquí son específicos de la compañía." groups="base.group_multi_company"/>
+                                <div class="text-muted">
+                                    Impuesto por defecto para Servicios IVA
+                                </div>
+                                <div class="content-group">
+                                    <div class="row mt16">
+                                        <label string="Ventas" for="service_sale_tax_id" class="col-md-3 o_light_label"/>
+                                        <field name="service_sale_tax_id" domain="[('type_tax_use', 'in', ('sale', 'all')), ('company_id', '=', company_id)]"/>
+                                    </div>
+                                    <div class="row">
+                                        <label string="Compras" for="service_purchase_tax_id" class="col-md-3 o_light_label"/>
+                                        <field name="service_purchase_tax_id" domain="[('type_tax_use', 'in', ('purchase', 'all')), ('company_id', '=', company_id)]"/>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="col-xs-12 col-md-6 o_setting_box" title="Estos impuestos se establecen en cualquier servicio nuevo creado.">
+                            <div class="o_setting_left_pane"/>
+                            <div class="o_setting_right_pane">
+                                <label for="product0_sale_tax_id" string='Impuesto de Servicios IVA 0'/>
+                                <span class="fa fa-lg fa-building-o" title="Los valores establecidos aquí son específicos de la compañía." groups="base.group_multi_company"/>
+                                <div class="text-muted">
+                                    Impuesto por defecto para Servicios IVA 0
+                                </div>
+                                <div class="content-group">
+                                    <div class="row mt16">
+                                        <label string="Ventas" for="service0_sale_tax_id" class="col-md-3 o_light_label"/>
+                                        <field name="service0_sale_tax_id" domain="[('type_tax_use', 'in', ('sale', 'all')), ('company_id', '=', company_id)]"/>
+                                    </div>
+                                    <div class="row">
+                                        <label string="Compras" for="service0_purchase_tax_id" class="col-md-3 o_light_label"/>
+                                        <field name="service0_purchase_tax_id" domain="[('type_tax_use', 'in', ('purchase', 'all')), ('company_id', '=', company_id)]"/>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="col-xs-12 col-md-6 o_setting_box" title="Estos impuestos se establecen en cualquier consumible nuevo creado.">
+                            <div class="o_setting_left_pane"/>
+                            <div class="o_setting_right_pane">
+                                <label for="product0_sale_tax_id"  string='Impuesto de Consumibles IVA'/>
+                                <span class="fa fa-lg fa-building-o" title="Los valores establecidos aquí son específicos de la compañía." groups="base.group_multi_company"/>
+                                <div class="text-muted">
+                                    Impuesto por defecto para Consumibles
+                                </div>
+                                <div class="content-group">
+                                    <div class="row mt16">
+                                        <label string="Ventas" for="consu_sale_tax_id" class="col-md-3 o_light_label"/>
+                                        <field name="consu_sale_tax_id" domain="[('type_tax_use', 'in', ('sale', 'all')), ('company_id', '=', company_id)]"/>
+                                    </div>
+                                    <div class="row">
+                                        <label string="Compras" for="consu_purchase_tax_id" class="col-md-3 o_light_label"/>
+                                        <field name="consu_purchase_tax_id" domain="[('type_tax_use', 'in', ('purchase', 'all')), ('company_id', '=', company_id)]"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-xs-12 col-md-6 o_setting_box" title="Estos impuestos se establecen en cualquier consumible nuevo creado.">
+                            <div class="o_setting_left_pane"/>
+                            <div class="o_setting_right_pane">
+                                <label for="product0_sale_tax_id"  string='Impuesto de Consumibles IVA 0'/>
+                                <span class="fa fa-lg fa-building-o" title="Los valores establecidos aquí son específicos de la compañía." groups="base.group_multi_company"/>
+                                <div class="text-muted">
+                                    Impuesto por defecto para Consumibles IVA 0
+                                </div>
+                                <div class="content-group">
+                                    <div class="row mt16">
+                                        <label string="Ventas" for="consu0_sale_tax_id" class="col-md-3 o_light_label"/>
+                                        <field name="consu0_sale_tax_id" domain="[('type_tax_use', 'in', ('sale', 'all')), ('company_id', '=', company_id)]"/>
+                                    </div>
+                                    <div class="row">
+                                        <label string="Compras" for="consu0_purchase_tax_id" class="col-md-3 o_light_label"/>
+                                        <field name="consu0_purchase_tax_id" domain="[('type_tax_use', 'in', ('purchase', 'all')), ('company_id', '=', company_id)]"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h2>Categorias de artículos usados en la Homologación </h2>
+                    <div class="row mt16 o_settings_container">
+                        <div class="col-xs-12 col-md-6 o_setting_box" id="service_categ_id" title="Categoria por defecto para Productos.">
+                            <div class="o_setting_left_pane"/>
+                            <div class="o_setting_right_pane">
+                                <label for="product0_sale_tax_id" string='Categoria de Productos'/>
+                                <span class="fa fa-lg fa-building-o" title="Los valores establecidos aquí son específicos de la compañía." groups="base.group_multi_company"/>
+                                <div class="text-muted">
+                                    Categoria por defecto para Productos
+                                </div>
+                                <div class="content-group">
+                                    <div class="row mt16">
+                                        <label string="Categoria" for="service_categ_id" class="col-md-3 o_light_label"/>
+                                        <field name="product_categ_id"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-xs-12 col-md-6 o_setting_box" id="service_categ_id" title="Categoria por defecto para Servicios.">
+                            <div class="o_setting_left_pane"/>
+                            <div class="o_setting_right_pane">
+                                <label for="product0_sale_tax_id" string='Categoria de Servicios'/>
+                                <span class="fa fa-lg fa-building-o" title="Los valores establecidos aquí son específicos de la compañía." groups="base.group_multi_company"/>
+                                <div class="text-muted">
+                                    Categoria por defecto para Servicios
+                                </div>
+                                <div class="content-group">
+                                    <div class="row mt16">
+                                        <label string="Categoria" for="service_categ_id" class="col-md-3 o_light_label"/>
+                                        <field name="service_categ_id"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-xs-12 col-md-6 o_setting_box" id="consu_categ_id" title="Categoria por defecto para Consumibles">
+                            <div class="o_setting_left_pane"/>
+                            <div class="o_setting_right_pane">
+                                <label for="product0_sale_tax_id"  string='Categoria de Consumibles'/>
+                                <span class="fa fa-lg fa-building-o" title="Los valores establecidos aquí son específicos de la compañía." groups="base.group_multi_company"/>
+                                <div class="text-muted">
+                                    Categoria por defecto para Consumibles
+                                </div>
+                                <div class="content-group">
+                                    <div class="row mt16">
+                                        <label string="Categoria" for="consu_categ_id" class="col-md-3 o_light_label"/>
+                                        <field name="consu_categ_id"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+            </div>
+            </xpath>
+
+        </field>
+    </record>
+<!--
+            <record id="action_l10n_ec_sri_config" model="ir.actions.act_window">
+                <field name="name">Configuración</field>
+                <field name="type">ir.actions.act_window</field>
+                <field name="res_model">res.config.settings</field>
+                <field name="view_mode">form</field>
+                <field name="target">inline</field>
+                <field name="context">{'module' : 'l10n_ec_sri'}</field>
+            </record> -->
+
+
+<!--
+                    <menuitem id="menu_l10n_ec_sri_settings" name="Ajustes" parent="l10n_ec_sri.menu_sri_configuration"
+                        sequence="0" action="action_l10n_ec_sri_config" groups="base.group_system"/> -->
+
+</odoo>

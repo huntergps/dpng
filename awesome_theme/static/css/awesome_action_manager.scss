@@ -1,0 +1,19 @@
+
+.o_action_manager {
+    margin-top: 60px;
+    margin-left: 300px;
+
+    display: flex;
+    flex-direction: column;
+    
+    overflow-y: auto;
+    background: #F1F2FA;
+
+    transition: margin-left 0.3s ease-in-out 0s;
+}
+
+@include media-breakpoint-down(sm) {
+    .o_action_manager {
+        margin-left: 0px;
+    }
+}

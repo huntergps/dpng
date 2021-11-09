@@ -1,0 +1,49 @@
+.o_search_panel {
+
+    position: relative;
+    overflow: visible;
+    margin-left: -210px;
+    margin-right: 3px;
+    transition: margin-left 0.3s ease-in-out 0s;
+
+    .scroll_container {
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+    }
+
+    .awesome_panel_toggler {
+        position: absolute;
+        width: 14px;
+        border-left: none;
+        margin-right: -14px;
+        right: 0px;
+        top: calc(50% - 8px);
+        height: 50px;
+        background: #ffffff;
+        border-top-right-radius: 5px;
+        border-bottom-right-radius: 5px;
+        color: white;
+        z-index: 1;
+        border: 1px solid #dee2e6;
+        border-left: 1px solid #fff;
+        padding-right: 3px;
+
+        &:hover {
+            path {
+                fill: #006fe6;
+            }
+        }
+    } 
+
+    &.show {
+        margin-left: 0px;
+    }
+
+    @include media-breakpoint-down(xs) {
+        position: absolute;
+        width: 213px;
+        z-index: 4;
+        box-shadow: 9px -1px 16px #00000049 !important;
+    }
+}

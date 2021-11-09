@@ -1,0 +1,66 @@
+<odoo>
+    <data noupdate="0">
+
+        <function model="anita_theme_setting.mode_template" name="install_template">
+            <value eval="'template1'"/>
+            <value eval="'awesome_theme'"/>
+            <value eval="'./static/template/template1.scss'"/>
+            <value>
+                {
+                    "$light_background_color": "#454c66",
+                    "$light_dark_background_color": "#313852",
+                    "$dark_background_color": "#313852",
+                    "$text_color": "#fff",
+
+                    "$primary_color": "#313852",
+                    "$primary_hover_color": "#3b425c",
+                    "$primary_active_color": "#3b425c",
+
+                    "$primary_border_color": "#4d5075",
+                    "$primary_border_hover_color": "#797bf2",
+                    "$primary_border_active_color": "#797bf2",
+
+                    "$primary_text_color": "#c7c7c7",
+                    "$primary_text_hover_color": "#797bf2",
+                    "$primary_text_active_color": "#797bf2",
+
+                    "$secondary_color": "#3b425c",
+                    "$secondary_hover_color": "#3b425c",
+                    "$secondary_active_color": "#3b425c",
+
+                    "$secondary_border_color": "#454c66",
+                    "$secondary_border_hover_color": "#454c66",
+                    "$secondary_border_active_color": "#454c66",
+
+                    "$secondary_text_color": "#c7c7c7",
+                    "$secondary_text_hover_color": "#fff",
+                    "$secondary_text_active_color": "#fff",
+
+                    "$dark_border_color": "#3b425c",
+                    "$light_border_color": "#59607a",
+
+                    "$menu_item_color": "#3b425c",
+                    "$menu_item_text_color": "#fff",
+                    "$menu_item_hover_color": "#454c66",
+
+                    "$shadow_color": "#24293c",
+
+                    "$link_color": "#313852",
+                    "$link_active_color": "#454c66",
+                    "$link_hover_color": "#454c66",
+
+                    "$link_text_color": "#c7c7c7",
+                    "$link_text_hover_color": "#c7c7c7",
+                    "$link_text_active_text_color": "#c7c7c7",
+
+                    "$table_row_hover_color": "rgba(0,0,0,0.04)",
+                    "$table_text_color": "#c7c7c7",
+                    "$table_border_color": "#4d5075",
+                    "$table_row_color": "rgba(0,0,0,0.04)",
+                    "$table_odd_row_color": "rgba(0,0,0,0.1)"
+                }
+            </value>
+        </function>
+
+    </data>
+</odoo>

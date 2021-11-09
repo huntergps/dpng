@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <record id="product.product_category_all" model="product.category">
+            <field name="name">Todo</field>
+        </record>
+        <record id="product.product_category_1" model="product.category">
+            <field name="parent_id" ref="product_category_all"/>
+            <field name="name">Vendible</field>
+        </record>
+        <record id="product.cat_expense" model="product.category">
+            <field name="parent_id" ref="product_category_all"/>
+            <field name="name">Gastos</field>
+        </record>
+        <!-- Price list -->
+        <record id="product.list0" model="product.pricelist">
+            <field name="name">Lista de Precio Publica</field>
+        </record>
+
+        <record id="product_category_sevices_ec" model="product.category">
+            <field name="parent_id" ref="product.product_category_1"/>
+            <field name="name">Servicios</field>
+            <field name="code_prefix">SERV</field>
+
+        </record>
+        <record id="product_category_consumables_ec" model="product.category">
+            <field name="parent_id" ref="product.product_category_all"/>
+            <field name="name">Consumibles</field>
+            <field name="code_prefix">CONSU</field>
+        </record>
+
+        <!-- Service products -->
+        <record id="product_service_tecnico" model="product.product">
+            <field name="name">Servicio de soporte tecnico</field>
+            <field name="categ_id" ref="product_category_sevices_ec"/>
+            <field name="standard_price">0</field>
+            <field name="list_price">30</field>
+            <field name="detailed_type">service</field>
+            <field name="uom_id" ref="uom.product_uom_unit"/>
+            <field name="uom_po_id" ref="uom.product_uom_unit"/>
+        </record>
+
+        <record id="product_service_desarrollo" model="product.product">
+            <field name="name">Servicio de desarrollo de software</field>
+            <field name="categ_id" ref="product_category_sevices_ec"/>
+            <field name="standard_price">0</field>
+            <field name="list_price">50</field>
+            <field name="detailed_type">service</field>
+            <field name="uom_id" ref="uom.product_uom_unit"/>
+            <field name="uom_po_id" ref="uom.product_uom_unit"/>
+        </record>
+
+        <record id="product_service_administrativo" model="product.product">
+            <field name="name">Servicios Administrativos</field>
+            <field name="categ_id" ref="product_category_sevices_ec"/>
+            <field name="standard_price">0</field>
+            <field name="list_price">10</field>
+            <field name="detailed_type">service</field>
+            <field name="uom_id" ref="uom.product_uom_unit"/>
+            <field name="uom_po_id" ref="uom.product_uom_unit"/>
+        </record>
+
+        <record id="product_service_theos_cloud" model="product.product">
+            <field name="name">Servicio Theos Cloud Mensual</field>
+            <field name="categ_id" ref="product_category_sevices_ec"/>
+            <field name="standard_price">0</field>
+            <field name="list_price">60</field>
+            <field name="detailed_type">service</field>
+            <field name="uom_id" ref="uom.product_uom_unit"/>
+            <field name="uom_po_id" ref="uom.product_uom_unit"/>
+        </record>
+
+    </data>
+</odoo>

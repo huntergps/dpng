@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id='l10n_ec.ec_ruc' model='l10n_latam.identification.type'>
+      <field name='code'>R</field>
+      <field name="tpidprov">01</field>
+      <field name="tpidcliente">04</field>
+    </record>
+
+    <record id='l10n_ec.ec_dni' model='l10n_latam.identification.type'>
+      <field name='code'>C</field>
+      <field name="tpidprov">02</field>
+      <field name="tpidcliente">05</field>
+    </record>
+
+    <record id='l10n_ec.ec_passport' model='l10n_latam.identification.type'>
+      <field name='code'>P</field>
+      <field name="tpidprov">03</field>
+      <field name="tpidcliente">06</field>
+    </record>
+
+    <record id='l10n_ec.ec_unknown' model='l10n_latam.identification.type'>
+      <field name='code'>P</field>
+      <field name="tpidprov">03</field>
+      <field name="tpidcliente">06</field>
+      <field name="active">0</field>
+    </record>
+
+    <record model='l10n_latam.identification.type' id='l10n_latam_base.it_vat'>
+        <field name="active">0</field>
+    </record>
+
+    <record model='l10n_latam.identification.type' id='l10n_latam_base.it_pass'>
+      <field name="active">0</field>
+    </record>
+
+    <record model='l10n_latam.identification.type' id='l10n_latam_base.it_fid'>
+      <field name="active">0</field>
+    </record>
+
+    <record model='l10n_latam.identification.type' id='it_consumidor_final'>
+        <field name="name">Consumidor final</field>
+        <field name="description">Consumidor final</field>
+        <field name="tpidcliente">07</field>
+        <field name='country_id' ref='base.ec'/>
+        <field name="code">F</field>
+        <field name='sequence'>1000</field>
+    </record>
+
+</odoo>

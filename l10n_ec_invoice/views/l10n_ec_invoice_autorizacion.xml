@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="account_l10n_ec_invoice_autorizacion" model="ir.ui.view">
+        <field name="name">l10n_ec_invoice.autorizacion.form</field>
+        <field name="model">l10n_ec_invoice.autorizacion</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="l10n_ec_entity"/>
+                <field name="l10n_ec_emission"/>
+                <field name="l10n_ec_emission_type"/>
+                <field name="l10n_ec_emission_address_id"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_l10n_ec_invoice_autorizacion_form" model="ir.ui.view">
+        <field name="name">l10n_ec_invoice.autorizacion.form</field>
+        <field name="model">l10n_ec_invoice.autorizacion</field>
+        <field name="priority">1</field>
+        <field name="arch" type="xml">
+            <form string="Punto de Emision">
+                <sheet>
+
+                    <group>
+                        <group>
+                          <field name="name"/>
+                          <field name="company_partner_id" invisible="1"/>
+
+                        </group>
+
+                    </group>
+                    <notebook>
+                        <page name="emission_point" string="Datos">
+                            <group>
+                                <group string="Datos Generales">
+                                  <field name="l10n_ec_entity"/>
+                                  <field name="l10n_ec_emission"/>
+                                  <field name="l10n_ec_emission_type"/>
+                                  <field name="l10n_ec_emission_address_id"/>
+                                </group>
+                                <!-- <group string="Secuencias de Ventas">
+                                  <field name="sale_invoice_secuence"/>
+                                  <field name="sale_credit_note_secuence"/>
+                                  <separator string="Secuencias de Compras" />
+                                  <field name="purchase_liquidation_secuence"/>
+                                  <field name="purchase_retention_secuence"/>
+
+
+                                </group> -->
+                            </group>
+                            <group string="Usuarios Autorizados">
+                              <field name="user_ids" nolabel="1"/>
+                            </group>
+
+                        </page>
+
+                    </notebook>
+                </sheet>
+
+            </form>
+        </field>
+    </record>
+
+
+    <record id="action_account_l10n_ec_invoice_autorizacion_tree" model="ir.actions.act_window">
+        <field name="name">Puntos de Emision</field>
+        <field name="res_model">l10n_ec_invoice.autorizacion</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+</odoo>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="awesome_theme.GroupByMenu" owl="1">
+        <div class="o_group_by_menu"
+            t-on-dropdown-item-selected="onGroupBySelected">
+            <div class="d-flex flex-column my-1">
+                <t t-set="currentGroup" t-value="null"/>
+                <t t-foreach="items" t-as="item" t-key="item.id">
+                    <t t-if="currentGroup !== null and currentGroup !== item.groupNumber">
+                        <div class="dropdown-divider" role="separator"/>
+                    </t>
+                    <t t-if="item.options">
+                        <div togglerClass="'o_menu_item' + (item.isActive ? ' selected' : '')">
+                            <AwesomeAccordion title="item.description">
+                                <t t-set-slot="content">
+                                    <t t-set="subGroup" t-value="null"/>
+                                    <t t-foreach="item.options" t-as="option" t-key="option.id">
+                                        <t t-if="subGroup !== null and subGroup !== option.groupNumber">
+                                            <div class="dropdown-divider" role="separator"/>
+                                        </t>
+                                        <DropdownItem class="o_item_option"
+                                            t-att-class="{ selected: option.isActive }"
+                                            payload="{ itemId: item.id, optionId: option.id }"
+                                            parentClosingMode="'none'"
+                                            t-esc="option.description"
+                                        />
+                                        <t t-set="subGroup" t-value="option.groupNumber"/>
+                                    </t>
+                                </t>
+                            </AwesomeAccordion>
+                        </div>
+                    </t>
+                    <t t-else="">
+                        <DropdownItem class="o_menu_item"
+                            t-att-class="{ selected: item.isActive }"
+                            payload="{ itemId: item.id }"
+                            parentClosingMode="'none'"
+                            t-esc="item.description"
+                        />
+                    </t>
+                    <t t-set="currentGroup" t-value="item.groupNumber"/>
+                </t>
+            </div>
+            <t t-if="fields.length">
+                <div t-if="items.length" role="separator" class="dropdown-divider"/>
+                <CustomGroupByItem fields="fields" t-on-add-custom-group="onAddCustomGroup"/>
+            </t>
+        </div>
+    </t>
+
+</templates>

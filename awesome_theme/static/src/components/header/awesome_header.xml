@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+
+    <!-- template for header  -->
+    <t t-name="awesome_theme.header" owl="1">
+        <div class="awesome_header d-flex flex-wrap">
+            <div class="d-flex flex-fill">
+                <ul class="navbar-nav">
+
+                    <!-- begin::navigation-toggler -->
+                    <li class="nav-item navigation-toggler">
+                        <a href="#" class="nav-link" title="Hide navigation" t-on-click.prevent="on_toggler_click">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-left"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+                        </a>
+                    </li>
+
+                    <!-- toggler for mobile -->
+                    <li class="nav-item navigation-toggler mobile-toggler">
+                        <a href="#" class="nav-link" title="Show navigation" t-on-click.prevent="on_toggler_click">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+                        </a>
+                    </li>
+                    <!-- end::navigation-toggler -->
+                </ul>
+
+                <!-- put the search bar --> 
+                <div class="d-flex flex-fill align-items-center">
+                    <div class="navigation-logo d-flex align-items-center justify-content-center" t-on-click.prevent="on_logo_click">
+                        <!-- company logo here  -->
+                        <img class="img-responsive mx-auto logo" t-attf-src="{{state.logo_url}}" alt="Logo"/>
+                    </div>
+                    <NotUpdatable>
+                        <div class="flex-fill d-flex align-items-center justify-content-center pr-2">
+                            <div class="flex-fill"></div>
+                            <div class="awesome_search_bar" />
+                        </div>
+                    </NotUpdatable>
+                </div>
+
+                <div class="o_menu_systray d-flex">
+                    <t t-foreach="systrayItems" t-as="item" t-key="item_index">
+                        <NotUpdatable>
+                            <ErrorHandler onError="error => handleItemError(error, item)">
+                                <t t-component="item.Component" t-props="item.props" />
+                            </ErrorHandler>
+                        </NotUpdatable>
+                    </t>
+                </div>
+            </div>
+        </div>
+    </t>
+
+</templates>

@@ -1,0 +1,44 @@
+
+.o_control_panel {
+    z-index: 2;
+    .o_cp_buttons {
+        button {
+            margin-left: 5px;
+        }
+    }
+
+    .breadcrumb {
+        background: transparent;
+        > li {
+            max-width: inherit !important;
+        }
+    }
+
+    .o_cp_action_menus {
+        margin-left: 5px;
+    }
+
+    @include media-breakpoint-down(sm) {
+        box-shadow: 0px 4px 16px #00000049 !important;
+    }
+
+    button {
+        min-width: 40px;
+    }
+
+    .o_list_selection_box  {
+        .text-monospace {
+            padding-left: 5px;
+        }
+    }
+}
+
+.o_x2m_control_panel {
+    .o_cp_pager {
+        .o_pager {
+            @include awesome-flex;
+            @include awesome-align-items-center;
+        }
+    }
+}
+

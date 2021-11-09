@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+  <record id="view_l10n_latam_identification_type_tree_ec" model="ir.ui.view">
+      <field name="name">l10n.ec.latam.identification.type.view</field>
+      <field name="model">l10n_latam.identification.type</field>
+      <field name="inherit_id" ref="l10n_latam_base.view_l10n_latam_identification_type_tree"/>
+      <field name="arch" type="xml">
+        <xpath expr="//field[@name='name']" position="before">
+            <field name="code"/>
+        </xpath>
+        <xpath expr="//field[@name='name']" position="after">
+            <field name="tpidprov"/>
+            <field name="tpidcliente"/>
+        </xpath>
+      </field>
+  </record>
+
+
+</odoo>
