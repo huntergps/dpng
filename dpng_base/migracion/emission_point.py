@@ -31,7 +31,7 @@ def theos_get_data_api(url):
 
 
 
-ODOO_DATABASE = 'odoo15'
+ODOO_DATABASE = 'dpng'
 ODOO_SERVER = 'http://localhost:8069'
 ODOO_USER='admin'
 ODOO_USER_CLAVE = '123'
@@ -91,10 +91,11 @@ def import_emission_point_theos_png():
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Script de importacion de Productos')
-    print(70*"==")
-    print(' IMPORTACION DE DATOS DESDE THEOS DPNG')
+    print(70*"=*=")
+    print(' IMPORTACION DE DATOS DESDE THEOS DPNG1')
     print(70*"==")
     # Conectamos con el server
+    print("-"*70)
     client = erppeek.Client(ODOO_SERVER, db=ODOO_DATABASE, user=ODOO_USER, password=ODOO_USER_CLAVE, verbose=False)
     # Modelos a utilizar
     print(70*"==")

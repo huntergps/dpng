@@ -181,7 +181,7 @@ if __name__ == '__main__':
             product_id = product_ids and product_ids[0] or False
             # print('<%s>'%p['fam'])
             print(categorias)
-            cat_id=categorias[p['fam']] if len(p['fam'])>0 else categorias['02']
+            cat_id=categorias[p['fam']] if len(p['fam'])>0 else categorias['01']
             vals={
                 'name':p['name'],
                 'default_code':code_product,

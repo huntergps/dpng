@@ -118,7 +118,7 @@ class ResPartner(models.Model):
                                     % partner.vat
                                 )
                         if partner.l10n_latam_identification_type_id.id == it_dni.id:
-                            valid = self.is_valid_ci_ec(partner.vat)
+                            valid = self.is_valid_ruc_ec(partner.vat)
                             if not valid:
                                 raise ValidationError(
                                     _(

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="balcon_order_bank_payment_view_form" model="ir.ui.view">
+        <field name="name">balcon.order.bank.payment.form</field>
+        <field name="model">balcon.bank.payment</field>
+        <field name="arch" type="xml">
+
+          <form string="Registro de Pagos Bancarios">
+              <p class="oe_grey">
+                  Se procedera a emitir la factura electronica
+                  una vez que se haya verificado la transaccion bancaria.
+              </p>
+              <group>
+                <group>
+
+                  <field name="count" attrs="{'invisible': [('count','=', 1)]}" readonly="True"/>
+                  <field name="order_id" readonly="1"/>
+                  <field name="date_order" readonly="1"/>
+                  <field name="amount_total" readonly="1"/>
+                  <field name="payment_registered_amount" readonly="1"/>
+                  <field name="payment_authorized_amount" readonly="1"/>
+                  <field name="amount_total_balance" readonly="1"/>
+
+                </group>
+                <group>
+                  <field name="payment_type" readonly="1"/>
+                  <field name="acquirer_id" attrs="{'required': [('payment_type', '=', 'bank')], 'invisible': [('payment_type', '!=', 'bank')]}"/>
+
+                  <field name="payment_date" attrs="{'required': [('payment_type', '=', 'bank')], 'invisible': [('payment_type', '!=', 'bank')]}" />
+                  <field name="bank_ref" attrs="{'required': [('payment_type', '=', 'bank')], 'invisible': [('payment_type', '!=', 'bank')]}" />
+                  <label for="amount" attrs="{'invisible': [('payment_type', 'not in', ('bank'))]}"/>
+                  <div attrs="{'invisible': [('payment_type', 'not in', ('bank'))]}"
+                      id="payment_method_details">
+                      <field name="currency_id" invisible="1"/>
+                      <field name="amount"
+                          attrs="{'required': [('payment_type', '=', 'bank')], 'invisible': [('payment_type', '!=', 'bank')]}" class="oe_inline"/>
+                  </div>
+                  <field name="file_name" invisible="1"/>
+                  <field name="file_type" invisible="1"/>
+                </group>
+
+              </group>
+              <!-- <label for="file"/> -->
+              <group col="2" >
+
+              <field name="file" accept=".pdf, .png, .jpg" filename="file_name" class="oe_inline"/>
+
+              <!-- <field name="narration" placeholder="Comentarios.." class="oe_inline" nolabel="1"/> -->
+            </group>
+
+              <footer>
+                  <button name="register_bank_payments" id="create_invoice_open" string="Confirm" type="object"
+                      context="{'open_invoices': True}" class="btn-primary"/>
+                  <button string="Cancel" class="btn-secondary" special="cancel"/>
+              </footer>
+          </form>
+
+
+
+        </field>
+    </record>
+
+    <record id="action_view_balcon_order_bank_payment" model="ir.actions.act_window">
+        <field name="name">Registrar Pagos</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">balcon.bank.payment</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+        <!-- TODO: check if we need this -->
+        <field name="binding_model_id" ref="l10n_ec_balcon.model_balcon_order" />
+        <field name="binding_view_types">list</field>
+    </record>
+
+</odoo>
